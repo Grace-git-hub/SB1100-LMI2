@@ -46,7 +46,6 @@ Feature_1
     Click button    id=cfg_miracast_connection_off    #Miracast Connection = Disable
     Select From List By Value    name=cfg_channel    153    #Operation channel = 153
     Select From List By Value    name=cfg_transmit_power    0    #Transmit Power = Low
-    Click button    id=cfg_ap_wifi_direct_broadcast_hide    #Wi-Fi DIRECT Broadcast = Hide
     Click button    id=cfg_force_pin_on    # Force PIN Pairing is On
     Click button    id=cfg_each_connect_pin_on    #Each PIN
     Select From List By Value    id=cfg_4digit_pin    0    #PIN length = 8
@@ -94,7 +93,6 @@ Feature_1
     Page should contain    "cfg_channel":"153",
     Page should contain    "cfg_ap_channel_number":"153",
     Page should contain    "cfg_transmit_power":"0",
-    Page should contain    "cfg_ap_wifi_direct_broadcast":"0",
     Page should contain    "cfg_force_pin":"1",
     Page should contain    "cfg_each_connect_pin":"1",
     Page should contain    "cfg_4digit_pin":"0",
@@ -129,7 +127,6 @@ Feature_2
     Click button    id=cfg_miracast_connection_on    #Miracast Connection = Enable
     Select From List By Value    name=cfg_channel    48    #Operation channel = 48
     Select From List By Value    name=cfg_transmit_power    2    #Transmit Power = High
-    Click button    id=cfg_ap_wifi_direct_broadcast_show    # Wi-Fi DIRECT Broadcast = Show
     Click button    id=cfg_force_pin_on    # Force PIN Pairing is On
     Click button    id=cfg_each_connect_pin_off    # Require PIN on = First connection
     Select From List By Value    id=cfg_4digit_pin    1    #PIN length = 4
@@ -169,7 +166,6 @@ Feature_2
     Page should contain    "cfg_channel":"48",
     Page should contain    "cfg_ap_channel_number":"48",
     Page should contain    "cfg_transmit_power":"2",
-    Page should contain    "cfg_ap_wifi_direct_broadcast":"1",
     Page should contain    "cfg_force_pin":"1",
     Page should contain    "cfg_each_connect_pin":"0",
     Page should contain    "cfg_4digit_pin":"1",
