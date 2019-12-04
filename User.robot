@@ -145,3 +145,15 @@ Login
     Input text    id=passwd    ${passwd}
     Click element    id=login
     sleep    1
+
+CreateRandomPIN
+    [Arguments]    ${PINLen}
+    ${digits}    evaluate    string.digits    string
+    ${Len}    evaluate    len('${digits}')
+    Comment    ${PINlength}    set variable    ${PINLen}
+    ${newdigits}    set variable    ${EMPTY}
+    :FOR    ${index}    IN RANGE    ${PINLen}
+    \    ${i}    evaluate    random.randint(0, int($Len)-1)    random
+    \    ${tmp}    set variable    ${digits[${i}-1]}
+    \    ${newdigits}    set variable    ${newdigits}${tmp}
+    log    ${newdigits}

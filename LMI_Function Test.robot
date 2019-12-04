@@ -919,3 +919,7 @@ PIN Display Period Test
     ${random_verify}    catenate    SEPARATOR=    "cfg_pin_display_period":"    ${random_number}    ",
     Page should contain    ${random_verify}
     Close Browser
+
+GetRandomPIN
+    [Documentation]    Get RandomPIN for 4 bit or 7 bit.
+    CreateRandomPIN    4
