@@ -79,6 +79,7 @@ Feature_1
     List Selection Should Be    name=cfg_wireless_op_mode    5
     List Selection Should Be    name=cfg_channel    153
     List Selection Should Be    name=cfg_transmit_power    0
+    List Selection Should Be    id=cfg_reboot_time    6
     Textfield value should be    cfg_pin_code    3456789
     Textfield value should be    name=cfg_pin_display_period    30
     Textfield value should be    name=cfg_display_off_timeout    30
@@ -238,12 +239,13 @@ Digital Singage_1
     Click button    id=cfg_digital_signage_fullscreen_off    #Display mode = Framed
     Input text    name=cfg_digital_signage_url    http://192.168.100.103:8080/video.html
     Input text    cfg_digital_signage_delay_sec    1000    #Restart Delay( 1000 seconds)
+    Select From List By Value    name=cfg_digital_signage_audio_vol    3    Digital Signage Audio Volume = High
     Click button    name=save_digital_signage    #Apply Settings
     sleep    2
     Alert Should Be Present
     Textfield value should be    name=cfg_digital_signage_url    http://192.168.100.103:8080/video.html
     Textfield value should be    cfg_digital_signage_delay_sec    1000
-    Select From List By Value    name=cfg_digital_signage_audio_vol    3
+    List Selection Should Be    name=cfg_digital_signage_audio_vol    3
     GetRXData
     Page should contain    "cfg_digital_signage":"1",
     Page should contain    "cfg_digital_signage_fullscreen":"0",
@@ -260,11 +262,12 @@ Digital Singage_2
     Click button    id=cfg_digital_signage_fullscreen_on    #Display mode = Fullscreen
     Clear Element Text    name=cfg_digital_signage_url
     Input text    cfg_digital_signage_delay_sec    10    #Restart Delay( 10 seconds)
-    Select From List By Value    name=cfg_digital_signage_audio_vol    0
+    Select From List By Value    name=cfg_digital_signage_audio_vol    0    #Digital Signage Audio Volume = Mute
     Click button    name=save_digital_signage    #Apply Settings
     sleep    2
     Alert Should Be Present
     Textfield value should be    cfg_digital_signage_delay_sec    10
+    List Selection Should Be    name=cfg_digital_signage_audio_vol    0
     GetRXData
     Page should contain    "cfg_digital_signage":"1",
     Page should contain    "cfg_digital_signage_fullscreen":"1",

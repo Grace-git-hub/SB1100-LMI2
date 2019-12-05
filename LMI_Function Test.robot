@@ -920,6 +920,380 @@ PIN Display Period Test
     Page should contain    ${random_verify}
     Close Browser
 
-GetRandomPIN
-    [Documentation]    Get RandomPIN for 4 bit or 7 bit.
-    CreateRandomPIN    4
+Quick Switch Test
+    Chrome_login    ${AdministratorName}    ${AdministratorPassword}
+    click element    class=lang_features
+    sleep    1
+    Select From List By Value    id=cfg_force_disconn    1    #Quick Swirch
+    sleep    1
+    Click button    id=cfg_show_rx_name_notshow    #Show Receiver Name = Don't show
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_force_disconn    1
+    GetRXData
+    Page should contain    "cfg_force_disconn":"1",
+    Page should contain    "cfg_show_rx_name":"2",
+    Go Back
+    Click button    id=cfg_show_rx_name_always    #Show Receiver Name = Always
+    Select From List By Value    name=cfg_rx_name_placement    1    #Receiver Name Placement = Bottom Right
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    name=cfg_rx_name_placement    1
+    GetRXData
+    Page should contain    "cfg_show_rx_name":"0",
+    Page should contain    "cfg_rx_name_placement":"1",
+    Go Back
+    Select From List By Value    name=cfg_rx_name_placement    2    #Receiver Name Placement = Bottom Center
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    name=cfg_rx_name_placement    2
+    GetRXData
+    Page should contain    "cfg_rx_name_placement":"2",
+    Go Back
+    Select From List By Value    name=cfg_rx_name_placement    3    #Receiver Name Placement = Upper Left
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    name=cfg_rx_name_placement    3
+    GetRXData
+    Page should contain    "cfg_rx_name_placement":"3",
+    Go Back
+    Select From List By Value    name=cfg_rx_name_placement    4    #Receiver Name Placement = Upper Right
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    name=cfg_rx_name_placement    4
+    GetRXData
+    Page should contain    "cfg_rx_name_placement":"4",
+    Go Back
+    Select From List By Value    name=cfg_rx_name_placement    5    #Receiver Name Placement = Upper Center
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    name=cfg_rx_name_placement    5
+    GetRXData
+    Page should contain    "cfg_rx_name_placement":"5",
+    Go Back
+    Select From List By Value    name=cfg_rx_name_placement    1    #Receiver Name Placement = Bottom Left
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    name=cfg_rx_name_placement    1
+    GetRXData
+    Page should contain    "cfg_rx_name_placement":"1",
+    Go Back
+    Close Browser
+
+HDMI/VGA Port Power Management waiting time
+    Chrome_login    ${AdministratorName}    ${AdministratorPassword}
+    click element    class=lang_features
+    sleep    1
+    Select From List By Value    name=cfg_display_off_type    1    #DMI/VGA Port Power Management = Screen Saver
+    sleep    1
+    Input text    name=cfg_display_off_timeout    1
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    Textfield value should be    name=cfg_display_off_timeout    1
+    GetRXData
+    Page should contain    "cfg_display_off_timeout":"1",
+    Go Back
+    Input text    name=cfg_display_off_timeout    9999
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    Textfield value should be    name=cfg_display_off_timeout    9999
+    GetRXData
+    Page should contain    "cfg_display_off_timeout":"9999",
+    Go Back
+    ${random_number}    evaluate    random.randint(1,9999)    random
+    Input text    name=cfg_display_off_timeout    ${random_number}
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    ${random_number_string}    convert to string    ${random_number}
+    Textfield value should be    name=cfg_display_off_timeout    ${random_number_string}
+    GetRXData
+    ${random_verify}    catenate    SEPARATOR=    "cfg_display_off_timeout":"    ${random_number}    ",
+    Page should contain    ${random_verify}
+    Close Browser
+
+Adjust TV Screen Size
+    Chrome_login    ${AdministratorName}    ${AdministratorPassword}
+    click element    class=lang_features
+    sleep    1
+    Select From List By Value    id=cfg_overscan    24    #Adjust TV Screen Size =1
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    24
+    GetRXData
+    Page should contain    "cfg_overscan":"24",
+    Go Back
+    Select From List By Value    id=cfg_overscan    23    #Adjust TV Screen Size =2
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    23
+    GetRXData
+    Page should contain    "cfg_overscan":"23",
+    Go Back
+    Select From List By Value    id=cfg_overscan    22    #Adjust TV Screen Size =3
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    22
+    GetRXData
+    Page should contain    "cfg_overscan":"22",
+    Go Back
+    Select From List By Value    id=cfg_overscan    21    #Adjust TV Screen Size =4
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    21
+    GetRXData
+    Page should contain    "cfg_overscan":"21",
+    Go Back
+    Select From List By Value    id=cfg_overscan    20    #Adjust TV Screen Size =5
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    20
+    GetRXData
+    Page should contain    "cfg_overscan":"20",
+    Go Back
+    Select From List By Value    id=cfg_overscan    19    #Adjust TV Screen Size =6
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    19
+    GetRXData
+    Page should contain    "cfg_overscan":"19",
+    Go Back
+    Select From List By Value    id=cfg_overscan    18    #Adjust TV Screen Size =7
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    18
+    GetRXData
+    Page should contain    "cfg_overscan":"18",
+    Go Back
+    Select From List By Value    id=cfg_overscan    17    #Adjust TV Screen Size =8
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    17
+    GetRXData
+    Page should contain    "cfg_overscan":"17",
+    Go Back
+    Select From List By Value    id=cfg_overscan    16    #Adjust TV Screen Size =9
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    16
+    GetRXData
+    Page should contain    "cfg_overscan":"16",
+    Go Back
+    Select From List By Value    id=cfg_overscan    15    #Adjust TV Screen Size =10
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    15
+    GetRXData
+    Page should contain    "cfg_overscan":"15",
+    Go Back
+    Select From List By Value    id=cfg_overscan    14    #Adjust TV Screen Size =11
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    14
+    GetRXData
+    Page should contain    "cfg_overscan":"14",
+    Go Back
+    Select From List By Value    id=cfg_overscan    13    #Adjust TV Screen Size =12
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    13
+    GetRXData
+    Page should contain    "cfg_overscan":"13",
+    Go Back
+    Select From List By Value    id=cfg_overscan    12    #Adjust TV Screen Size =13
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    12
+    GetRXData
+    Page should contain    "cfg_overscan":"12",
+    Go Back
+    Select From List By Value    id=cfg_overscan    11    #Adjust TV Screen Size =14
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    11
+    GetRXData
+    Page should contain    "cfg_overscan":"11",
+    Go Back
+    Select From List By Value    id=cfg_overscan    10    #Adjust TV Screen Size =15
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    10
+    GetRXData
+    Page should contain    "cfg_overscan":"10",
+    Go Back
+    Select From List By Value    id=cfg_overscan    9    #Adjust TV Screen Size =16
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    9
+    GetRXData
+    Page should contain    "cfg_overscan":"9",
+    Go Back
+    Select From List By Value    id=cfg_overscan    8    #Adjust TV Screen Size =17
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    8
+    GetRXData
+    Page should contain    "cfg_overscan":"8",
+    Go Back
+    Select From List By Value    id=cfg_overscan    7    #Adjust TV Screen Size =18
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    7
+    GetRXData
+    Page should contain    "cfg_overscan":"7",
+    Go Back
+    Select From List By Value    id=cfg_overscan    6    #Adjust TV Screen Size =19
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    6
+    GetRXData
+    Page should contain    "cfg_overscan":"6",
+    Go Back
+    Select From List By Value    id=cfg_overscan    5    #Adjust TV Screen Size =20
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    5
+    GetRXData
+    Page should contain    "cfg_overscan":"5",
+    Go Back
+    Select From List By Value    id=cfg_overscan    4    #Adjust TV Screen Size =21
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    4
+    GetRXData
+    Page should contain    "cfg_overscan":"4",
+    Go Back
+    Select From List By Value    id=cfg_overscan    3    #Adjust TV Screen Size =22
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    3
+    GetRXData
+    Page should contain    "cfg_overscan":"3",
+    Go Back
+    Select From List By Value    id=cfg_overscan    2    #Adjust TV Screen Size =23
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    2
+    GetRXData
+    Page should contain    "cfg_overscan":"2",
+    Go Back
+    Select From List By Value    id=cfg_overscan    1    #Adjust TV Screen Size =24
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    1
+    GetRXData
+    Page should contain    "cfg_overscan":"1",
+    Go Back
+    Select From List By Value    id=cfg_overscan    0    #Adjust TV Screen Size =25
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    0
+    GetRXData
+    Page should contain    "cfg_overscan":"0",
+    Go Back
+    Select From List By Value    id=cfg_overscan    25    #Adjust TV Screen Size =0
+    Click button    name=save_2    #Apply Settings
+    sleep    2
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_overscan    25
+    GetRXData
+    Page should contain    "cfg_overscan":"25",
+    Close Browser
+
+Auto-reboot receiver
+    Chrome_login    ${AdministratorName}    ${AdministratorPassword}
+    click element    class=lang_features
+    sleep    1
+    Select From List By Value    id=cfg_reboot_time    6    #Auto-reboot receiver when idle for = 6hr
+    sleep    1
+    Click button    name=save_2    #Apply Settings
+    sleep    1
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_reboot_time    6
+    GetRXData
+    Page should contain    "cfg_reboot_time":"6",
+    Go Back
+    sleep    1
+    Select From List By Value    id=cfg_reboot_time    8    #Auto-reboot receiver when idle for = 8hr
+    sleep    1
+    Click button    name=save_2    #Apply Settings
+    sleep    1
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_reboot_time    8
+    GetRXData
+    Page should contain    "cfg_reboot_time":"8",
+    Go Back
+    sleep    1
+    Select From List By Value    id=cfg_reboot_time    10    #Auto-reboot receiver when idle for = 10hr
+    sleep    1
+    Click button    name=save_2    #Apply Settings
+    sleep    1
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_reboot_time    10
+    GetRXData
+    Page should contain    "cfg_reboot_time":"10",
+    Go Back
+    sleep    1
+    Select From List By Value    id=cfg_reboot_time    12    #Auto-reboot receiver when idle for = 12hr
+    sleep    1
+    Click button    name=save_2    #Apply Settings
+    sleep    1
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_reboot_time    12
+    GetRXData
+    Page should contain    "cfg_reboot_time":"12",
+    Go Back
+    sleep    1
+    Select From List By Value    id=cfg_reboot_time    24    #Auto-reboot receiver when idle for = 24hr
+    sleep    1
+    Click button    name=save_2    #Apply Settings
+    sleep    1
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_reboot_time    24
+    GetRXData
+    Page should contain    "cfg_reboot_time":"24",
+    Go Back
+    sleep    1
+    Select From List By Value    id=cfg_reboot_time    0    #Auto-reboot receiver when idle for = Never
+    sleep    1
+    Click button    name=save_2    #Apply Settings
+    sleep    1
+    Alert Should Be Present
+    List Selection Should Be    id=cfg_reboot_time    0
+    GetRXData
+    Page should contain    "cfg_reboot_time":"0",
+    Go Back
