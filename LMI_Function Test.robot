@@ -1297,3 +1297,47 @@ Auto-reboot receiver
     GetRXData
     Page should contain    "cfg_reboot_time":"0",
     Go Back
+
+ConfigureDigitalSignage
+    Chrome_login    ${AdministratorName}    ${AdministratorPassword}
+    sleep    1
+    click element    class=lang_digital_signage
+    sleep    1
+    click element    id=cfg_digital_signage_on
+    Input text    name=cfg_digital_signage_url    http://192.168.3.30:18080/static/digtalsignage/Grace/video.html
+    Input text    name=cfg_digital_signage_delay_sec    1000
+    Select From List By Value    name=cfg_digital_signage_audio_vol    1
+    click element    name=save_digital_signage
+    Alert Should Be Present
+    GetRXData
+    Page should contain    "cfg_digital_signage_url":"http://192.168.3.30:18080/static/digtalsignage/Grace/video.html"
+    Page should contain    "cfg_digital_signage_delay_sec":"1000"
+    Page should contain    "cfg_digital_signage_audio_vol":"1"
+    sleep    1
+    Go Back
+    Input text    name=cfg_digital_signage_delay_sec    10
+    Select From List By Value    name=cfg_digital_signage_audio_vol    2
+    click element    name=save_digital_signage
+    Alert Should Be Present
+    GetRXData
+    Page should contain    "cfg_digital_signage_delay_sec":"10"
+    Page should contain    "cfg_digital_signage_audio_vol":"2"
+    sleep    1
+    Go Back
+    ${delay_time}    evaluate    random.randint(10,1000)    random
+    log    ${delay_time}
+    Input text    name=cfg_digital_signage_delay_sec    ${delay_time}
+    Select From List By Value    name=cfg_digital_signage_audio_vol    3
+    click element    name=save_digital_signage
+    Alert Should Be Present
+    GetRXData
+    Page should contain    "cfg_digital_signage_delay_sec":"${delay_time}"
+    Page should contain    "cfg_digital_signage_audio_vol":"3"
+    sleep    1
+    Go Back
+    Select From List By Value    name=cfg_digital_signage_audio_vol    0
+    click element    name=save_digital_signage
+    Alert Should Be Present
+    GetRXData
+    Page should contain    "cfg_digital_signage_audio_vol":"0"
+    Close Browser

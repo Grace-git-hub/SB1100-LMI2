@@ -1,5 +1,5 @@
 *** Variables ***
-${Eth_addr}       192.168.100.110
+${Eth_addr}       192.168.1.108
 ${Wireless_static_addr}    192.168.100.199
 ${LMI_Modify_Port}    65534
 ${Wireless_LAN_Name}    TPLINK_5G
@@ -152,7 +152,7 @@ CreateRandomPIN
     ${Len}    evaluate    len('${digits}')
     Comment    ${PINlength}    set variable    ${PINLen}
     ${newdigits}    set variable    ${EMPTY}
-    :FOR    ${index}    IN RANGE    ${PINLen}
+    : FOR    ${index}    IN RANGE    ${PINLen}
     \    ${i}    evaluate    random.randint(0, int($Len)-1)    random
     \    ${tmp}    set variable    ${digits[${i}-1]}
     \    ${newdigits}    set variable    ${newdigits}${tmp}
